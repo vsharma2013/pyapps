@@ -2,7 +2,7 @@ from sklearn import datasets
 import numpy as np
 from sklearn.cross_validation import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Perceptron
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 def run():
@@ -18,10 +18,10 @@ def run():
 	X_train_std = sc.transform(X_train)
 	X_test_std  = sc.transform(X_test)
 
-	ppn = Perceptron(n_iter=40, eta0=0.1, random_state=0)
-	ppn.fit(X_train_std, y_train)
+	lr = LogisticRegression(C=1000.0, random_state=0)
+	lr.fit(X_train_std, y_train)
 
-	y_pred = ppn.predict(X_test_std)
+	y_pred = lr.predict(X_test_std)
 
 	print ('Missclassified samples = %d' % (y_test != y_pred).sum())
 	print('Accuracy = %.2f' % accuracy_score(y_test, y_pred))
