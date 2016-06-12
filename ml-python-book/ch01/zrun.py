@@ -1,4 +1,4 @@
-import intro as intro
+import perceptron as ppn
 
 def run():
-	intro.run()
+	ppn.run()
